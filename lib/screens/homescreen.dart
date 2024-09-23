@@ -16,6 +16,15 @@ class Homescreen extends StatefulWidget {
 
 class HomescreenState extends State<Homescreen> {
   int selectedIndex = 0;
+  final List<String> categories = [
+    'Smart Phones',
+    'Laptop',
+    'Handsfree',
+    'Headsets',
+    'Charges',
+    'SmartWatch',
+    'Powerbank',
+  ];
 
   void onItemTapped(int index) {
     setState(() {
@@ -85,7 +94,9 @@ class HomescreenState extends State<Homescreen> {
               ),
 
               const SizedBox(height: 16.0),
-              CategorySlider(),
+              CategorySlider(
+                categories: categories,
+              ),
               const SizedBox(height: 16.0),
               ProductGrid(), // Add the product grid here
             ],

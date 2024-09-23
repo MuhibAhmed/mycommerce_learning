@@ -1,17 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CategorySlider extends StatelessWidget {
-  final List<String> categories = [
-    'Smart Phones',
-    'Laptop',
-    'Handsfree',
-    'Headsets',
-    'Charges',
-    'SmartWatch',
-    'Powerbank',
-  ];
+  final List<String> categories;
 
-  CategorySlider({super.key});
+  const CategorySlider({super.key, required this.categories});
 
   @override
   Widget build(BuildContext context) {
