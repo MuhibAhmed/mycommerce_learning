@@ -1,6 +1,7 @@
 // homescreen.dart
 
 import 'package:flutter/material.dart';
+import 'package:mycommerce/models/products.dart';
 import 'package:mycommerce/widgets/categories_slider.dart';
 import 'package:mycommerce/widgets/image_slider.dart';
 import 'package:mycommerce/widgets/product_grid.dart';
@@ -98,7 +99,8 @@ class HomescreenState extends State<Homescreen> {
                 categories: categories,
               ),
               const SizedBox(height: 16.0),
-              ProductGrid(), // Add the product grid here
+              ProductGrid(
+                  productList: productsList), // Add the product grid here
             ],
           ),
         ),

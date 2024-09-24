@@ -1,5 +1,3 @@
-// productscreen.dart
-
 import 'package:flutter/material.dart';
 import 'package:mycommerce/models/products.dart';
 import 'package:mycommerce/widgets/rating_widget.dart';
@@ -14,8 +12,23 @@ class ProductScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(product.title),
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Colors.transparent,
+        elevation: 4.0, // Add elevation to the AppBar
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pop(); // Navigate back to the home screen
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.favorite),
+            onPressed: () {
+              Navigator.of(context)
+                  .pushNamed('/favorites'); // Navigate to favorites screen
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(

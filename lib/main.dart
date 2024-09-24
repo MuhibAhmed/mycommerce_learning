@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mycommerce/models/products.dart';
-import 'package:mycommerce/screens/productscreen.dart';
+// import 'package:mycommerce/models/products.dart';
+// import 'package:mycommerce/screens/productscreen.dart';
+import 'package:mycommerce/screens/homescreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,8 +20,8 @@ class MyApp extends StatelessWidget {
               seedColor: const Color.fromARGB(255, 14, 22, 113)),
           useMaterial3: true,
         ),
-        home:
-            // const Homescreen()
-            ProductScreen(product: productsList[8]));
+        debugShowCheckedModeBanner: false,
+        home: const Homescreen());
+    // ProductScreen(product: productsList[0]));
   }
 }
