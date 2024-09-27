@@ -13,16 +13,22 @@ class ProductScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        elevation: 4.0, // Add elevation to the AppBar
+        // elevation: 4.0, // Add elevation to the AppBar
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
           onPressed: () {
             Navigator.of(context).pop(); // Navigate back to the home screen
           },
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.favorite),
+            icon: const Icon(
+              Icons.favorite,
+              color: Colors.black,
+            ),
             onPressed: () {
               Navigator.of(context)
                   .pushNamed('/favorites'); // Navigate to favorites screen
@@ -48,13 +54,17 @@ class ProductScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    product.title,
-                    style: const TextStyle(
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold,
+                  Expanded(
+                    child: Text(
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      product.title,
+                      style: const TextStyle(
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      // textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
                   ),
                   ElevatedButton(
                     onPressed: () {},

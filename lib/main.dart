@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mycommerce/screens/cart_screen.dart';
+// import 'package:mycommerce/models/products.dart';
+// import 'package:mycommerce/screens/cart_screen.dart';
 // import 'package:mycommerce/models/products.dart';
 // import 'package:mycommerce/screens/productscreen.dart';
-import 'package:mycommerce/screens/homescreen.dart';
+// import 'package:mycommerce/screens/homescreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,7 +13,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,7 +23,8 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        home: const Homescreen());
+        home: const CartScreen());
+    // Homescreen());
     // ProductScreen(product: productsList[0]));
   }
 }
