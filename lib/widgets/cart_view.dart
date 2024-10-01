@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mycommerce/models/cart_products.dart';
+import 'package:mycommerce/models/products.dart';
 
 class CartView extends StatelessWidget {
-  final List<CartProducts> cartItems;
+  final List<Products> cartItems;
 
   const CartView({super.key, required this.cartItems});
 

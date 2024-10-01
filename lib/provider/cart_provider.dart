@@ -1,10 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mycommerce/models/cart_products.dart';
+import 'package:mycommerce/models/products.dart';
 
-class CartItemsNotifier extends StateNotifier<List<CartProducts>> {
+class CartItemsNotifier extends StateNotifier<List<Products>> {
   CartItemsNotifier() : super([]);
 
-  void addToCart(CartProducts item) {
+  void addToCart(Products item) {
     if (!state.contains(item)) {
       state = [...state, item];
     }
@@ -18,6 +18,6 @@ class CartItemsNotifier extends StateNotifier<List<CartProducts>> {
 }
 
 final cartProvider =
-    StateNotifierProvider<CartItemsNotifier, List<CartProducts>>((ref) {
+    StateNotifierProvider<CartItemsNotifier, List<Products>>((ref) {
   return CartItemsNotifier();
 });
