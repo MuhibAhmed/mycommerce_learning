@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mycommerce/models/products.dart';
+import 'package:mycommerce/provider/cart_provider.dart';
 import 'package:mycommerce/widgets/cart_view.dart';
 
-class CartScreen extends StatelessWidget {
+class CartScreen extends ConsumerWidget {
   const CartScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    var cartItems = ref.watch(cartProvider);
     double subtotal =
         productsList.fold(0, (sum, product) => sum + product.price);
     double discount = 76;
@@ -46,10 +49,10 @@ class CartScreen extends StatelessWidget {
           Expanded(
               child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: CartView(cartItems: productsList),
+            child: CartView(cartItems: cartItems),
           )),
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 border:
                     Border(top: BorderSide(color: Colors.grey, width: 0.5))),
             child: Padding(

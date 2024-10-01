@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mycommerce/screens/cart_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:mycommerce/screens/cart_screen.dart';
+import 'package:mycommerce/screens/homescreen.dart';
 // import 'package:mycommerce/models/products.dart';
 // import 'package:mycommerce/screens/cart_screen.dart';
 // import 'package:mycommerce/models/products.dart';
@@ -7,7 +9,7 @@ import 'package:mycommerce/screens/cart_screen.dart';
 // import 'package:mycommerce/screens/homescreen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        home: const CartScreen());
+        home: const Homescreen());
     // Homescreen());
     // ProductScreen(product: productsList[0]));
   }

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:mycommerce/models/products.dart';
+import 'package:mycommerce/screens/cart_screen.dart';
 import 'package:mycommerce/widgets/categories_slider.dart';
 import 'package:mycommerce/widgets/image_slider.dart';
 import 'package:mycommerce/widgets/product_grid.dart';
@@ -46,9 +47,13 @@ class HomescreenState extends State<Homescreen> {
           IconButton(
             icon: const Icon(Icons.shopping_bag),
             onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Item added to cart')),
-              );
+              // ScaffoldMessenger.of(context).showSnackBar(
+              //   const SnackBar(content: Text('Item added to cart')),
+              // );
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (BuildContext ctx) {
+                return CartScreen();
+              }));
             },
           ),
         ],
