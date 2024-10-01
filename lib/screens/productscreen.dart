@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mycommerce/models/products.dart';
+import 'package:mycommerce/provider/cart_provider.dart';
+import 'package:mycommerce/provider/favourite_provider.dart';
 import 'package:mycommerce/widgets/rating_widget.dart';
 import 'package:mycommerce/widgets/categories_slider.dart';
 
-class ProductScreen extends StatelessWidget {
+class ProductScreen extends ConsumerWidget {
   final Products product;
 
   const ProductScreen({super.key, required this.product});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -30,8 +33,7 @@ class ProductScreen extends StatelessWidget {
               color: Colors.black,
             ),
             onPressed: () {
-              Navigator.of(context)
-                  .pushNamed('/favorites'); // Navigate to favorites screen
+              ref.read(favouriteItemProvider.notifier).togglefavourite(product);
             },
           ),
         ],
@@ -128,6 +130,7 @@ class ProductScreen extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
+                      ref.read(cartProvider.notifier).addToCart(product);
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('Item added to cart')),
                       );

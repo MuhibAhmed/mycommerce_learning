@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mycommerce/models/products.dart';
 
 class CartItemsNotifier extends StateNotifier<List<Products>> {
-  CartItemsNotifier() : super([]);
+  CartItemsNotifier() : super([]); //default data
 
   void addToCart(Products item) {
     if (!state.contains(item)) {

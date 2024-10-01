@@ -1,22 +1,25 @@
 // homescreen.dart
 
 import 'package:flutter/material.dart';
-import 'package:mycommerce/models/products.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:mycommerce/models/products.dart';
+import 'package:mycommerce/provider/product_provider.dart';
 import 'package:mycommerce/screens/cart_screen.dart';
+// import 'package:mycommerce/screens/favorites_screen.dart';
 import 'package:mycommerce/widgets/categories_slider.dart';
 import 'package:mycommerce/widgets/image_slider.dart';
 import 'package:mycommerce/widgets/product_grid.dart';
 import 'package:mycommerce/widgets/search_bar.dart'; // Import the SearchBar
 import 'package:mycommerce/widgets/bottom_navigation.dart'; // Import the BottomNavigation
 
-class Homescreen extends StatefulWidget {
+class Homescreen extends ConsumerStatefulWidget {
   const Homescreen({super.key});
 
   @override
-  HomescreenState createState() => HomescreenState();
+  ConsumerState<Homescreen> createState() => HomescreenState();
 }
 
-class HomescreenState extends State<Homescreen> {
+class HomescreenState extends ConsumerState<Homescreen> {
   int selectedIndex = 0;
   final List<String> categories = [
     'Smart Phones',
@@ -36,6 +39,7 @@ class HomescreenState extends State<Homescreen> {
 
   @override
   Widget build(BuildContext context) {
+    var productList = ref.watch(productProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -53,6 +57,7 @@ class HomescreenState extends State<Homescreen> {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (BuildContext ctx) {
                 return CartScreen();
+                // return FavoritesScreen();
               }));
             },
           ),
@@ -105,7 +110,7 @@ class HomescreenState extends State<Homescreen> {
               ),
               const SizedBox(height: 16.0),
               ProductGrid(
-                  productList: productsList), // Add the product grid here
+                  productList: productList), // Add the product grid here
             ],
           ),
         ),
