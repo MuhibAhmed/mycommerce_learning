@@ -6,13 +6,31 @@ class CartView extends StatelessWidget {
 
   const CartView({super.key, required this.cartItems});
 
+  Map<Products, int> countProducts(List<Products> list) {
+    // Create a map to store counts
+    Map<Products, int> counts = {};
+
+    // Iterate through the list and count occurrences
+    for (var item in list) {
+      if (counts.containsKey(item)) {
+        counts[item] = counts[item]! + 1; // Increment count
+      } else {
+        counts[item] = 1; // Initialize count
+      }
+    }
+    return counts;
+  }
+
   @override
   Widget build(BuildContext context) {
+    final countOfEachProduct = countProducts(cartItems);
+    final distinctProductsList = countOfEachProduct.keys.toList();
     return ListView.separated(
-      itemCount: cartItems.length,
+      itemCount: distinctProductsList.length,
       itemBuilder: (context, index) {
-        final product = cartItems[index];
+        final product = distinctProductsList[index];
 
+        final productCount = countOfEachProduct[distinctProductsList[index]];
         return Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -68,7 +86,7 @@ class CartView extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(width: 8),
-                          const Text('1'),
+                          Text(productCount.toString()),
                           const SizedBox(width: 8),
                           Container(
                             decoration: BoxDecoration(

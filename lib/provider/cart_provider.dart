@@ -5,9 +5,8 @@ class CartItemsNotifier extends StateNotifier<List<Products>> {
   CartItemsNotifier() : super([]); //default data
 
   void addToCart(Products item) {
-    if (!state.contains(item)) {
-      state = [...state, item];
-    }
+    state = [...state, item];
+    print(state);
   }
 
   void removeToCart(int id) {
