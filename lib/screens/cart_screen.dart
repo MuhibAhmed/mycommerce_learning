@@ -10,8 +10,7 @@ class CartScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var cartItems = ref.watch(cartProvider);
-    double subtotal =
-        productsList.fold(0, (sum, product) => sum + product.price);
+    double subtotal = cartItems.fold(0, (sum, product) => sum + product.price);
     double discount = 76;
     double deliveryFees = 200;
 

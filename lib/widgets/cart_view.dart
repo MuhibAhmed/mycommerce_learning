@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mycommerce/models/products.dart';
+import 'package:mycommerce/provider/cart_provider.dart';
 
-class CartView extends StatelessWidget {
+class CartView extends ConsumerWidget {
   final List<Products> cartItems;
 
   const CartView({super.key, required this.cartItems});
@@ -22,7 +24,7 @@ class CartView extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final countOfEachProduct = countProducts(cartItems);
     final distinctProductsList = countOfEachProduct.keys.toList();
     return ListView.separated(
@@ -57,7 +59,11 @@ class CartView extends StatelessWidget {
                       ),
                       IconButton(
                         icon: const Icon(Icons.close, color: Colors.black),
-                        onPressed: () {},
+                        onPressed: () {
+                          ref
+                              .read(cartProvider.notifier)
+                              .removeFromCart(distinctProductsList[index].id);
+                        },
                       ),
                     ],
                   ),
@@ -82,7 +88,11 @@ class CartView extends StatelessWidget {
                             ),
                             child: IconButton(
                               icon: const Icon(Icons.add),
-                              onPressed: () {},
+                              onPressed: () {
+                                ref
+                                    .read(cartProvider.notifier)
+                                    .addToCart(distinctProductsList[index]);
+                              },
                             ),
                           ),
                           const SizedBox(width: 8),
@@ -95,7 +105,12 @@ class CartView extends StatelessWidget {
                             ),
                             child: IconButton(
                               icon: const Icon(Icons.remove),
-                              onPressed: () {},
+                              onPressed: () {
+                                ref
+                                    .read(cartProvider.notifier)
+                                    .decreaseQuantity(
+                                        distinctProductsList[index]);
+                              },
                             ),
                           ),
                         ],
